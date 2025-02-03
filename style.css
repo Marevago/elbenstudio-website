@@ -46,9 +46,7 @@ body {
 }
 
 .hero {
-    min-height: 100vh;
-    margin-top: clamp(-25rem, -7vw, -7rem);
-    margin-bottom: -15rem;
+    margin-top: -6.5rem ;
     position: relative;
     padding: clamp(1rem, 3vw, 2rem);
     overflow: hidden;
