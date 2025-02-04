@@ -1,6 +1,33 @@
 
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Title animation (mantendo o existente)
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuItems = document.querySelector('.menu-items');
+    
+    menuToggle.addEventListener('click', function() {
+        menuToggle.classList.toggle('active');
+        menuItems.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInside = menuToggle.contains(event.target) || menuItems.contains(event.target);
+        
+        if (!isClickInside && menuItems.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            menuItems.classList.remove('active');
+        }
+    });
+
+    // Close menu when clicking on a link
+    const menuLinks = document.querySelectorAll('.menu-items a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            menuItems.classList.remove('active');
+        });
+    });
+});
     const title = document.querySelector('.title');
     const text = title.textContent;
     title.textContent = '';
@@ -81,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
    
-});
 
 // Menu toggle (mantendo o existente)
 const menuToggle = document.querySelector('.menu-toggle');
