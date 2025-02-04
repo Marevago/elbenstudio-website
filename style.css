@@ -849,6 +849,35 @@ body {
     }
 }
 
+@media (width: 390px) {
+    
+    .cta-button {
+        display: inline-flex;
+        align-items: center;     /* Alinha verticalmente */
+        justify-content: center; /* Alinha horizontalmente */
+        padding: 1.7rem 1.5rem;
+        background-color: #444444;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        margin-top: 0;
+        position: relative;
+        width: 19rem;
+        height: 3.2rem;
+    }
+
+    .website-text {
+        position: relative;
+        text-align: center;
+        top: -6rem;
+        margin: 0 auto;
+        width: 110%;
+        max-width: 118rem; 
+    }
+}
+
 /* New Sections Media queries */
 
 @keyframes fadeIn {
