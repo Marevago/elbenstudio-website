@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     // Title animation (mantendo o existente)
     const title = document.querySelector('.title');
