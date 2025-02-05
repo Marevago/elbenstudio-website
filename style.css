@@ -942,18 +942,21 @@ body {
 }
 
 /* Tablet */
-@media (min-width: 482px) and (max-width: 506px) {
+@media (min-width: 482px) and (max-width: 867px) {
     .title {
     font-size: clamp(4rem, 14vw, 5rem);
-    margin-top: -10rem;
+    margin-top: -11rem;
     color: tomato;
     }
 
     .hero-text {
         width: 100%; 
-        left: 3rem; 
+        left: auto; 
         top: -5rem;  
         align-items: center;
+        font-size: clamp(1.2rem, 6vw, 3.5rem);
+        justify-content: center;
+        position: relative;
     }
 
     .website-text {
@@ -970,6 +973,8 @@ body {
         margin: auto;
     }
 }
+
+
 
 /* Desktop */
 @media (min-width: 768px) {
