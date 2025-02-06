@@ -1061,7 +1061,59 @@ body {
     color: #ccc;
 }
 
+.language-switcher-container {
+    gap: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 1.5rem;
+}
+
+.language-button {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.language-button:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+.language-button.active {
+    opacity: 1;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.language-button svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+
 /* Media queries */
+
+@media (min-width: 768px) {
+    .menu-items {
+        align-items: center;
+    }
+    
+    .language-switcher-container {
+        margin-left: 2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .language-switcher-container {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+}
 
 @media (max-width: 768px) {
     .contact-form {
