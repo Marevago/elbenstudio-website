@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR"> <!-- This will change dynamically based on selected language -->
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Elben Studio - Web Development & Media Creation</title>
+    <title data-i18n="page_title">Elben Studio - Web Development & Media Creation</title>
 </head>
 <body>
     <header class="header">
@@ -18,10 +18,41 @@
             </div>
             
             <ul class="menu-items">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">Services</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="https://wa.link/lfs04f">Contact</a></li>
+                <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                <li><a href="about.html" data-i18n="nav_services">Services</a></li>
+                <li><a href="about.html" data-i18n="nav_about">About</a></li>
+                <li><a href="https://wa.link/lfs04f" data-i18n="nav_contact">Contact</a></li>
+                <li class="language-switcher-container">
+                    <div class="language-button" data-lang="en">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <rect width="512" height="512" fill="#fff"/>
+                            <rect width="512" height="39.385" y="0" fill="#bf0a30"/>
+                            <rect width="512" height="39.385" y="78.769" fill="#bf0a30"/>
+                            <rect width="512" height="39.385" y="157.538" fill="#bf0a30"/>
+                            <rect width="512" height="39.385" y="236.308" fill="#bf0a30"/>
+                            <rect width="512" height="39.385" y="315.077" fill="#bf0a30"/>
+                            <rect width="512" height="39.385" y="393.846" fill="#bf0a30"/>
+                            <rect width="512" height="39.385" y="472.615" fill="#bf0a30"/>
+                            <rect width="275.692" height="275.692" fill="#002868"/>
+                            <g fill="#fff">
+                                ${Array.from({length: 50}, (_, i) => {
+                                    const x = (i % 6) * 40 + ((i / 6 | 0) % 2) * 20 + 15;
+                                    const y = (i / 6 | 0) * 20 + 15;
+                                    return `<circle cx="${x}" cy="${y}" r="7"/>`;
+                                }).join('')}
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="language-button" data-lang="pt">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <rect width="512" height="512" fill="#009b3a"/>
+                            <path d="M256 19.692L492.308 256 256 492.308 19.692 256z" fill="#fedf00"/>
+                            <circle cx="256" cy="256" r="80" fill="#002776"/>
+                            <path d="M176.466 288.928c49.995 38.523 109.073 38.523 159.068 0" 
+                                  fill="none" stroke="#fff" stroke-width="10"/>
+                        </svg>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -30,30 +61,27 @@
         <div class="content-wrapper">
             <div class="title-container">
                 <div id="three-container"></div>
-                <h1 class="title">Impact</h1>
+                <h1 class="title" data-i18n="hero_title">Impact</h1>
                 <video class="video-mask" autoplay muted loop playsinline>
                     <source src="title_video_stars.mov" type="video/mov">
                 </video>
                 <img src="mercurius_statue.png" alt="Estátua de Hermes" class="hermes-statue">
                 <img src="hero_background.svg" alt="Fundo de Montanhas" class="hero-background">
                 <h2 class="hero-text">
-                    <span>Your</span>
-                    <span>Clients</span>
+                    <span data-i18n="hero_subtitle_1">Your</span>
+                    <span data-i18n="hero_subtitle_2">Clients</span>
                 </h2>
-                
             </div>
 
             <div class="text-container">
-
                 <p class="website-text">
-                    <em><strong>Stand Out in the Digital Space</strong></em>
-                    With a <em>Website</em>, <em>Software</em>, or <em>Digital Marketing</em> That Converts <strong>Into Real Results</strong> .
+                    <em><strong data-i18n="hero_strong_text">Stand Out in the Digital Space</strong></em>
+                    <span data-i18n="hero_main_text">With a <em>Website</em>, <em>Software</em>, or <em>Digital Marketing</em> That Converts <strong>Into Real Results</strong>.</span>
                 </p>
 
                 <a href="contact.html" class="cta-button">
-                    <span>Schedule a Free Consultation</span>
+                    <span data-i18n="cta_button">What We Can Do For You</span>
                 </a>
-
             </div>
         </div>
     </main>
@@ -61,14 +89,14 @@
     <section class="pain-mirror">
         <div class="content-wrapper">
             <h2 class="mirror-title">
-                The Hidden Cost of an<br>
-                <em>Outdated Digital Presence</em>
+                <span data-i18n="pain_title">The Hidden Cost of an</span><br>
+                <em data-i18n="pain_title_em">Outdated Digital Presence</em>
             </h2>
             
             <div class="mirror-card">
-                <h3>Understand The Digital Divide</h3>
+                <h3 data-i18n="pain_subtitle">Understand The Digital Divide</h3>
                 
-                <p class="mirror-text">
+                <p class="mirror-text" data-i18n="pain_text">
                     Every day your business operates with an outdated digital presence, 
                     you're losing ground to competitors. An <em>emotional disconnect</em> and 
                     <em>poor user experience</em> are silently driving away potential customers, 
@@ -77,8 +105,8 @@
                     digital landscape.
                 </p>
     
-                <a href="blog.html" class="arrow-button">
-                    <span>Learn More About The Digital Gap</span>
+                <a href="#learn-more" class="arrow-button">
+                    <span data-i18n="learn_more">Learn More About The Digital Gap</span>
                 </a>
             </div>
         </div>
@@ -87,35 +115,35 @@
     <section class="success-vision">
         <div class="content-wrapper">
             <h2 class="vision-title">
-                Imagine Your Business<br>
-                <em>Dominating Digital</em>
+                <span data-i18n="vision_title">Imagine Your Business</span><br>
+                <em data-i18n="vision_title_em">Dominating Online</em>
             </h2>
             
-            <p class="vision-subtitle">
-                Transform your online presence into an automated growth machine
+            <p class="vision-subtitle" data-i18n="vision_subtitle">
+                Transform your digital presence into a powerful conversion engine
             </p>
      
             <div class="vision-cards">
                 <div class="vision-card">
                     <div class="icon-target"></div>
-                    <h3>3x More Qualified Leads</h3>
-                    <p>
-                        AI-powered targeting and automation working 24/7 to bring you the right customers at the right time
+                    <h3 data-i18n="leads_title">3x More Qualified Leads</h3>
+                    <p data-i18n="leads_text">
+                        Custom-built websites, landing pages and ecommerce that turn visitors into customers, with AI-powered optimization working 24/7 to maximize your conversion rates
                     </p>
                 </div>
      
                 <div class="vision-card">
                     <div class="icon-chart"></div>
-                    <h3>80% Lower Acquisition Costs</h3>
-                    <p>
-                        Optimized conversion funnels and intelligent systems that reduce your cost per customer while increasing quality
+                    <h3 data-i18n="costs_title">Smart Software Solutions</h3>
+                    <p data-i18n="costs_text">
+                        Automated systems and custom software that streamline your operations, reduce costs, and create seamless experiences that keep customers coming back
                     </p>
                 </div>
      
                 <div class="vision-card">
                     <div class="icon-growth"></div>
-                    <h3>Sustainable Growth</h3>
-                    <p>
+                    <h3 data-i18n="growth_title">Sustainable Growth</h3>
+                    <p data-i18n="growth_text">
                         A digital ecosystem that continuously evolves and improves, generating more revenue with less effort
                     </p>
                 </div>
@@ -126,16 +154,16 @@
      <section class="proof-pillar">
         <div class="content-wrapper">
             <h2 class="pillar-title">
-                Expertise That<br>
-                <em>Delivers Results</em>
+                <span data-i18n="expertise_title">Expertise That</span><br>
+                <em data-i18n="expertise_title_em">Delivers Results</em>
             </h2>
             
-            <p class="pillar-subtitle">
-                Combining Technical Excellence with Marketing Innovation
+            <p class="pillar-subtitle" data-i18n="expertise_subtitle">
+                Combining Technical Excellence with Creative Innovation
             </p>
      
             <div class="pillar-card">
-                <h3>The Founder</h3>
+                <h3 data-i18n="founder_title">Our Team</h3>
                 
                 <div class="team-members">
                     <div class="member">
@@ -145,30 +173,29 @@
                             </div>
                             <div class="member-info">
                                 <h4>Paulo</h4>
-                                <p class="role">Web Developer</p>
+                                <p class="role" data-i18n="role_developer">Web Developer</p>
                                 <ul class="credentials">
-                                    <li>Computer Science Undergraduate</li>
-                                    <li>FullStack Development</li>
-                                    <li>Google Ads Search Certified</li>
+                                    <li data-i18n="credential_1">Computer Science Undergraduate</li>
+                                    <li data-i18n="credential_2">FullStack Development</li>
+                                    <li data-i18n="credential_3">Paid Media Analyst</li>
+                                    <li data-i18n="credential_4">Google Ads Search Certified</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-
-                <div class="aura-presentation">
-                    <h3>Our Personal<br> AI Worker</h3>
-                </div>
                     
                     <div class="member">
                         <div class="member-header">
                             <div class="profile-photo">
-                                <img src="aura-profile.png" alt="Aura" />
+                                <img src="maria-profile2.png" alt="Maria" />
                             </div>
                             <div class="member-info">
-                                <h4>Aura-W1</h4>
-                                <p class="role">Artificial Intelligence</p>
+                                <h4>Maria Lúiza</h4>
+                                <p class="role" data-i18n="role_ai">Content Production</p>
                                 <ul class="credentials">
-                                    <li>Aura is directly involved in the development of our projects and can aswer any questions about our services.</li>
+                                    <li data-i18n="credential_001">Marketing & Muldimedia Undergraduate</li>
+                                    <li data-i18n="credential_002">Video Production</li>
+                                    <li data-i18n="credential_003">Social Media</li>
                                 </ul>
                             </div>
                         </div>
@@ -176,17 +203,17 @@
                 </div>
      
                 <div class="methodology">
-                    <h3>Our Methodology</h3>
+                    <h3 data-i18n="methodology_title">Our Methodology</h3>
                     <ul class="methodology-list">
-                        <li>Data-Driven Development</li>
-                        <li>AI-Enhanced Solutions</li>
-                        <li>Conversion-Focused Design</li>
-                        <li>Strategic Digital Marketing</li>
+                        <li data-i18n="methodology_1">Data-Driven Development</li>
+                        <li data-i18n="methodology_2">AI-Enhanced Solutions</li>
+                        <li data-i18n="methodology_3">Conversion-Focused Design</li>
+                        <li data-i18n="methodology_4">Strategic Digital Marketing</li>
                     </ul>
                 </div>
      
                 <a href="#see-more" class="arrow-button">
-                    <span>See Our Full Portfolio</span>
+                    <span data-i18n="portfolio_button">See Our Full Portfolio</span>
                 </a>
             </div>
         </div>
@@ -195,28 +222,25 @@
      <section class="decision-bridge">
         <div class="content-wrapper">
             <h2 class="bridge-title">
-                Ready to Take<br>
-                <em>The Next Step?</em>
+                <span data-i18n="ready_title">Ready to Take</span><br>
+                <em data-i18n="ready_title_em">The Next Step?</em>
             </h2>
     
             <div class="bridge-card">
-                <h3>Let's Build Your Digital Success Story</h3>
+                <h3 data-i18n="success_title">Let's Build Your Digital Success Story</h3>
                 
                 <p class="bridge-text">
-                    Join the businesses that are already transforming their digital presence 
+                    <span data-i18n="success_text">Join the businesses that are already transforming their digital presence 
                     with <em>cutting-edge technology</em> and <em>strategic marketing</em>. 
                     Our team is ready to understand your goals and create a customized solution 
-                    that will drive real results for your business.
+                    that will drive real results for your business.</span>
                 </p>
                 <a href="#contact" class="arrow-button">
-                    <span>Schedule Your Free Strategy Session</span>
+                    <span data-i18n="schedule_button">Schedule Your Free Strategy Session</span>
                 </a>
             </div>
         </div>
     </section>
-
-
-
     
     <footer class="footer-section">
         <div class="content-wrapper">
@@ -224,24 +248,24 @@
                 <div class="footer-content">
                     <div class="footer-brand">
                         <img src="elben_logo_white.png" alt="Elben Studio" class="footer-logo">
-                        <p class="footer-tagline">
+                        <p class="footer-tagline" data-i18n="footer_tagline">
                             Digital Solutions for Growth
                         </p>
                     </div>
     
                     <div class="footer-links">
                         <div class="footer-column">
-                            <h4>Services</h4>
+                            <h4 data-i18n="footer_services">Services</h4>
                             <ul>
-                                <li><a href="#web">Web Development</a></li>
-                                <li><a href="#ai">AI Solutions</a></li>
-                                <li><a href="#marketing">Digital Marketing</a></li>
-                                <li><a href="#video">Video Production</a></li>
+                                <li><a href="#web" data-i18n="service_web">Web Development</a></li>
+                                <li><a href="#ai" data-i18n="service_ai">AI Solutions</a></li>
+                                <li><a href="#marketing" data-i18n="service_marketing">Digital Marketing</a></li>
+                                <li><a href="#video" data-i18n="service_video">Video Production</a></li>
                             </ul>
                         </div>
     
                         <div class="footer-column">
-                            <h4>Contact</h4>
+                            <h4 data-i18n="footer_contact">Contact</h4>
                             <ul>
                                 <li><a href="mailto:contact@elbenstudio.com">contact@elbenstudio.com</a></li>
                                 <li><a href="tel:+1234567890">+55 (48) 9 8816-7364</a></li>
@@ -249,7 +273,7 @@
                         </div>
     
                         <div class="footer-column">
-                            <h4>Follow Us</h4>
+                            <h4 data-i18n="footer_follow">Follow Us</h4>
                             <div class="social-links">
                                 <a href="https://www.instagram.com/elben_studio?igsh=NGw0Mnlzb3BjdnRk&utm_source=qr" class="social-icon">
                                     <div class="icon-instagram"></div>
@@ -263,13 +287,15 @@
                 </div>
     
                 <div class="footer-bottom">
-                    <p class="copyright">© 2025 Elben Studio. All rights reserved.</p>
+                    <p class="copyright" data-i18n="footer_copyright">© 2025 Elben Studio. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>  
         
-<script src="script.js"></script>
-    
+    <!-- Language handling scripts -->
+    <script src="translations.js"></script>
+    <script src="language-handler.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
