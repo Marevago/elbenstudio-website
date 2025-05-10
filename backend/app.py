@@ -77,6 +77,10 @@ def submit_contact():
             'message': str(e)
         }), 400
 
+@app.route('/api/contact', methods=['OPTIONS'])
+def handle_options():
+    return '', 200
+
 # Rota para listar contatos (útil para teste)
 @app.route('/api/contacts', methods=['GET'])
 def list_contacts():
