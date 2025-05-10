@@ -11,13 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # Configuração do CORS
-CORS(app, resources={
-    r"/api/*": {
-        "origins": "*",
-        "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type"]
-    }
-})
+CORS(app, origins="*", methods=["GET", "POST", "OPTIONS"], allow_headers=["Content-Type"])
 
 # Configuração do banco de dados
 database_url = os.getenv('DATABASE_URL', 'sqlite:///contacts.db')
