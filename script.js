@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            e.stopPropagation();
             console.log('Formulário submetido');
             
             // Coletar dados do formulário
