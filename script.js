@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
                 console.log('Iniciando envio para o servidor...');
-                const apiUrl = window.config?.apiUrl || 'https://elbenstudio-backend.up.railway.app';
+                const apiUrl = window.config?.apiUrl || 'https://elbenstudio-website-production.up.railway.app';
                 const response = await fetch(`${apiUrl}/api/contact`, {
                     method: 'POST',
                     headers: {
