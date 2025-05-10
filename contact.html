@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos do Pop-up */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 90%;
+            width: 500px;
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: popupIn 0.3s ease-out;
+        }
+
+        .popup-logo {
+            width: 120px;
+            margin-bottom: 1.5rem;
+        }
+
+        .popup-content h2 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .popup-content p {
+            color: #ccc;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .popup-highlight {
+            color: rgb(202, 188, 134) !important;
+            font-weight: 500;
+        }
+
+        .popup-close-btn {
+            background: rgb(202, 188, 134);
+            color: black;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .popup-close-btn:hover {
+            background: rgb(222, 208, 154);
+            transform: translateY(-2px);
+        }
+
+        @keyframes popupIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <title>Contato - Elben Studio</title>
+</head>
+<body>
+    <header class="header-contact">        
+        <nav class="nav-menu">
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="menu-items">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="about.html">Serviços</a></li>
+                <li><a href="about.html">Sobre</a></li>
+                <li><a href="https://wa.link/lfs04f">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="about-page">
+        <div id="particles-contact"></div>
+        <div class="content-wrapper">
+            <div class="about-card">
+                <div class="about-content">
+                    <div class="about-brand">
+                        <img src="elben_logo_white.png" alt="Elben Studio" class="about-logo">
+                        <h2 class="about-tagline">
+                            Vamos Colocar<br><em>Seu Projeto Em Prática?</em>
+                        </h2>
+                    </div>
+
+                    <div class="form-container">
+                        <form class="contact-form" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="name">Seu Nome</label>
+                                <input type="text" id="name" name="name" required placeholder="Digite seu nome completo">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Telefone (WhatsApp)</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Digite seu número de telefone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service">Serviço de Interesse</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Selecione um serviço</option>
+                                    <option value="software">Website</option>
+                                    <option value="mobile">Software Sob Medida</option>
+                                    <option value="mobile">Aplicativo Mobile</option>
+                                    <option value="website">Produção de Mídia</option>
+                                    <option value="website">Outro</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="message">Sua Mensagem</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Conte-nos sobre suas ideias e objetivos - nosso time apaixonado por tecnologia está pronto para ajudar"></textarea>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <button type="submit" class="submit-button">
+                                    <strong>ENVIAR</strong>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="contact-info-section">
+                            <h3>Outras Formas de Contato</h3>
+                            <div class="social-links">
+                                <a href="https://www.instagram.com/elben_studio?igsh=NGw0Mxlzb3BjdnRk&utm_source=qr" class="social-icon">
+                                    <div class="icon-instagram"></div>
+                                </a>
+                                <a href="#linkedin" class="social-icon">
+                                    <div class="icon-linkedin"></div>
+                                </a>
+                            </div>
+                            <div class="contact-info">
+                                <a href="mailto:contact@elbenstudio.com">contact@elbenstudio.com</a>
+                                <a href="tel:+1234567890">+55 (48) 9 8816-7364</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-bottom">
+                    <p class="copyright"> 2025 Elben Studio. Todos os direitos reservados.</p>
+                </div>
+
+                <!-- Pop-up de Sucesso -->
+                <div id="successPopup" class="popup-overlay">
+                    <div class="popup-content">
+                        <img src="elben_logo_white.png" alt="Elben Studio" class="popup-logo">
+                        <h2>Mensagem Enviada!</h2>
+                        <p>Agradecemos seu contato. Nossa equipe responderá o mais breve possível.</p>
+                        <p class="popup-highlight">Tempo médio de resposta: 24 horas úteis</p>
+                        <button class="popup-close-btn" onclick="closePopup()">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="translations.js"></script>
+    <script src="language-handler.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
