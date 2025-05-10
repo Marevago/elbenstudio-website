@@ -1,4 +1,5 @@
 // script.js
+// Aguarda o DOM estar completamente carregado
 document.addEventListener('DOMContentLoaded', function() {
     // Funções do pop-up
     window.closePopup = function() {
