@@ -1,6 +1,5 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
 from datetime import datetime
 import os
 from dotenv import load_dotenv
@@ -10,8 +9,12 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# Configuração do CORS
-CORS(app, origins="*", methods=["GET", "POST", "OPTIONS"], allow_headers=["Content-Type"])
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+    return response
 
 # Configuração do banco de dados
 database_url = os.getenv('DATABASE_URL', 'sqlite:///contacts.db')
@@ -47,8 +50,11 @@ class Contact(db.Model):
 with app.app_context():
     db.create_all()
 
-@app.route('/api/contact', methods=['POST'])
+@app.route('/api/contact', methods=['POST', 'OPTIONS'])
 def submit_contact():
+    if request.method == 'OPTIONS':
+        return make_response('', 200)
+        
     try:
         data = request.json
         
@@ -76,10 +82,6 @@ def submit_contact():
             'status': 'error',
             'message': str(e)
         }), 400
-
-@app.route('/api/contact', methods=['OPTIONS'])
-def handle_options():
-    return '', 200
 
 # Rota para listar contatos (útil para teste)
 @app.route('/api/contacts', methods=['GET'])
