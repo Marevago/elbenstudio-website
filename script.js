@@ -1,4 +1,6 @@
 // script.js
+import { supabase } from './supabase.js';
+
 // Aguarda o DOM estar completamente carregado
 document.addEventListener('DOMContentLoaded', function() {
     // Funções do pop-up
@@ -78,51 +80,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 service: document.getElementById('service').value,
-                message: document.getElementById('message').value
+                message: document.getElementById('message').value,
+                created_at: new Date().toISOString()
             };
 
             console.log('Dados coletados:', formData);
 
             try {
-                console.log('Iniciando envio para o servidor...');
-                const apiUrl = 'https://elbenstudio-backend.up.railway.app';
-                const url = `${apiUrl}/submit`;
-                console.log('URL da API:', url);
+                console.log('Iniciando envio para o Supabase...');
+                const { data, error } = await supabase
+                    .from('contacts')
+                    .insert([formData]);
 
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                if (error) {
+                    console.error('Erro do Supabase:', error);
+                    throw error;
                 }
 
-                console.log('Resposta recebida:', response.status);
-                const data = await response.json();
-                console.log('Dados da resposta:', data);
-
-                if (response.ok) {
-                    console.log('Envio bem-sucedido!');
-                    // Limpar formulário
-                    contactForm.reset();
-                    
-                    // Mostrar pop-up
-                    const popup = document.getElementById('successPopup');
-                    if (popup) {
-                        popup.style.display = 'flex';
-                        setupPopupEvents();
-                        console.log('Pop-up exibido');
-                    } else {
-                        console.error('Elemento do pop-up não encontrado!');
-                        alert('Mensagem enviada com sucesso!');
-                    }
+                console.log('Envio bem-sucedido!', data);
+                
+                // Limpar formulário
+                contactForm.reset();
+                
+                // Mostrar pop-up
+                const popup = document.getElementById('successPopup');
+                if (popup) {
+                    popup.style.display = 'flex';
+                    setupPopupEvents();
+                    console.log('Pop-up exibido');
                 } else {
-                    console.error('Erro na resposta:', data);
-                    alert('Erro ao enviar mensagem: ' + (data.message || 'Tente novamente'));
+                    console.error('Elemento do pop-up não encontrado!');
+                    alert('Mensagem enviada com sucesso!');
                 }
             } catch (error) {
                 console.error('Erro ao enviar:', error);
