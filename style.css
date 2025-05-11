@@ -1407,16 +1407,10 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
+/* Contact Form Styles */
 .form-container {
     margin-top: 3rem;
     padding: 0 1rem;
-}
-
-.header-contact {
-    background-color: white;
-    color: black;
-    padding: 2rem;
-    margin-top: -6rem;
 }
 
 .contact-form {
@@ -1491,9 +1485,9 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1.2rem 0.1rem;
-    background-color: #bdb070;
-    color: rgb(42, 42, 42);
+    padding: 1.2rem 2.5rem;
+    background-color: #444444;
+    color: white;
     border: none;
     border-radius: 50px;
     font-size: 1.1rem;
@@ -1527,7 +1521,6 @@ body {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
 }
-
 
 /* About Page Styles */
 
