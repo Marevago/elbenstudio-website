@@ -19,7 +19,7 @@ body {
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: 1rem;
     width: 100%;
@@ -37,6 +37,13 @@ body {
     width: clamp(60px, 15vw, 90px);
 }
 
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .menu-toggle {
     width: 30px;
     height: 24px;
@@ -44,6 +51,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    margin-left: auto;
 }
 
 .menu-toggle span {
@@ -1420,16 +1428,22 @@ body {
 }
 
 .contact-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
     margin-bottom: 3rem;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.8rem;
+    width: 100%;
 }
 
 .form-group.full-width {
@@ -1452,6 +1466,9 @@ body {
     color: #fff;
     font-size: 1rem;
     transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
 }
 
 .form-group input:focus,
@@ -1548,6 +1565,7 @@ body {
     border-radius: 1rem;
     padding: 3rem 1rem;
     margin: 0 auto;
+    margin-top: -4rem;
     max-width: 800px;
     width: 100%;
     color: white;
@@ -1591,6 +1609,7 @@ body {
 
 .about-tagline {
     font-size: 1.1rem;
+    margin-bottom: -3rem;
     color: rgba(255, 255, 255, 0.8);
 }
 
