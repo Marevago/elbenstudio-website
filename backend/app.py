@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 from datetime import datetime
 import os
 from dotenv import load_dotenv
@@ -9,12 +10,14 @@ load_dotenv()
 
 app = Flask(__name__)
 
-@app.after_request
-def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
-    response.headers.add('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
-    return response
+# Configuração do CORS para permitir apenas o domínio do frontend
+CORS(app, resources={
+    r"/api/*": {
+        "origins": ["https://www.elben.com.br", "http://localhost:5000"],
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
+    }
+})
 
 # Configuração do banco de dados
 database_url = os.getenv('DATABASE_URL', 'sqlite:///contacts.db')
