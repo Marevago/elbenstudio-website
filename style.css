@@ -55,7 +55,7 @@ body {
 
 .hero {
     height: 55vh;
-    margin-top: -1rem;
+    margin-top: 2rem; /* Ajustado de -1rem para 2rem em mobile */
     position: relative;
     padding: clamp(1rem, 3vw, 2rem);
     overflow: hidden;
