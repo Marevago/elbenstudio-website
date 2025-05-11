@@ -86,11 +86,15 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 console.log('Iniciando envio para o servidor...');
                 const apiUrl = 'https://elbenstudio-backend.up.railway.app';
-                console.log('URL da API:', apiUrl);
-                const response = await fetch(`${apiUrl}/api/contact`, {
+                const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+                const url = `${corsProxy}${apiUrl}/api/contact`;
+                console.log('URL da API:', url);
+
+                const response = await fetch(url, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Origin': 'https://www.elben.com.br'
                     },
                     body: JSON.stringify(formData)
                 });
