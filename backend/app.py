@@ -88,6 +88,36 @@ def submit_contact():
             'message': str(e)
         }), 400
 
+@app.route('/submit', methods=['POST'])
+def submit_no_cors():
+    try:
+        data = request.json
+        
+        # Criar novo contato
+        new_contact = Contact(
+            name=data['name'],
+            email=data['email'],
+            phone=data.get('phone', ''),
+            service=data['service'],
+            message=data.get('message', '')
+        )
+        
+        # Salvar no banco de dados
+        db.session.add(new_contact)
+        db.session.commit()
+        
+        return jsonify({
+            'status': 'success',
+            'message': 'Mensagem recebida com sucesso!',
+            'contact': new_contact.to_dict()
+        }), 201
+        
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e)
+        }), 400
+
 # Rota para listar contatos (útil para teste)
 @app.route('/api/contacts', methods=['GET'])
 def list_contacts():
