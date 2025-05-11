@@ -62,13 +62,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Manipulador do formulário de contato
     const contactForm = document.getElementById('contactForm');
+    const submitButton = document.querySelector('.submit-button');
     console.log('Formulário encontrado:', contactForm);
+    console.log('Botão encontrado:', submitButton);
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
+    if (contactForm && submitButton) {
+        submitButton.addEventListener('click', async function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Formulário submetido');
+            console.log('Botão clicado');
             
             // Coletar dados do formulário
             const formData = {
