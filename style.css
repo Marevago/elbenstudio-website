@@ -98,6 +98,13 @@ body.menu-open {
     text-decoration: none;
 }
 
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .menu-toggle {
     width: 30px;
     height: 24px;
@@ -1728,9 +1735,16 @@ body.menu-open {
 .about-card {
     background: linear-gradient(145deg, #383838, #171717);
     border-radius: 1rem;
+<<<<<<< HEAD
     padding: 2rem;
     margin: -4rem auto 2rem;
     max-width: 1200px;
+=======
+    padding: 3rem 1rem;
+    margin: 0 auto;
+    margin-top: -4rem;
+    max-width: 800px;
+>>>>>>> 41a0d473084d2068067afc0f7b87d4e7bbffbfc1
     width: 100%;
     color: white;
     position: relative;
