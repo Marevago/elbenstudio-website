@@ -1,6 +1,5 @@
 * {
     margin: 0;
-    margin-right: 0 auto;
     padding: 0;
     box-sizing: border-box;
 }
@@ -50,6 +49,14 @@ body.menu-open {
     max-height: 50px;
     object-fit: contain;
     transition: transform 0.3s ease;
+}
+
+.white-logo {
+    display: none;
+}
+
+.dark-logo {
+    display: block;
 }
 
 .logo:hover {
@@ -113,7 +120,6 @@ body.menu-open {
     justify-content: space-between;
     cursor: pointer;
     margin-left: auto;
-<<<<<<< HEAD
     z-index: 1000;
     padding: 0;
     background: none;
@@ -125,8 +131,6 @@ body.menu-open {
     .menu-toggle {
         display: flex;
     }
-=======
->>>>>>> 41a0d473084d2068067afc0f7b87d4e7bbffbfc1
 }
 
 .menu-toggle span {
@@ -154,6 +158,16 @@ body.menu-open {
 
 .menu-toggle.active span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+}
+
+.desktop-hero-points {
+    display: none;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    color: #dadada;
+    text-align: center;
 }
 
 .hero {
@@ -2175,13 +2189,7 @@ body.menu-open {
         font-size: clamp(0.85rem, 2vw, 1rem);
         margin-top: -9.2rem;
     }
-
-    .lead-text {
-        max-width: 200px;
-        top: 189px;
-        left: 230px;
-    }
-
+    
     .website-text {
         position: relative;
         text-align: center;
@@ -2191,8 +2199,14 @@ body.menu-open {
         width: 120%;
         max-width: 800px;
     }
+    
+    .cta-button {
+        position: relative;
+        right: auto;
+        margin: auto;
+    }
 }
-
+    
 /* Mobile maior (min-width: 390px and max-width: 480px) */
 @media (min-width: 393px) and (max-width: 480px) {
     .hero {
@@ -2246,7 +2260,7 @@ body.menu-open {
         font-size: clamp(0.7rem, 11vw, 5rem);
         margin-top: -10rem;
     }
-
+    
     .hero-text {
         width: 100%;
         left: auto;
@@ -2256,7 +2270,7 @@ body.menu-open {
         justify-content: center;
         position: relative;
     }
-
+    
     .website-text {
         position: relative;
         text-align: center;
@@ -2264,7 +2278,7 @@ body.menu-open {
         margin: 1rem auto;
         margin-top: -5rem;
     }
-
+    
     .cta-button {
         position: relative;
         right: auto;
@@ -2476,6 +2490,24 @@ body.menu-open {
 
     .blog-card {
         margin: 0 1rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .hero {
+        display: none;
+    }
+
+    .desktop-hero-points {
+        display: block;
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .desktop-hero-points .highlight {
+        color: var(--accent-color);
     }
 }
 
@@ -3105,6 +3137,18 @@ body.menu-open {
         display: none;
     }
 
+    .desktop-hero-points {
+        display: block;
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .desktop-hero-points .highlight {
+        color: var(--accent-color);
+    }
+
     .mirror-title {
         margin-top: -1rem;
         font-size: clamp(4rem, 5vw, 6.5rem);
@@ -3182,5 +3226,67 @@ body.menu-open {
 
     .credentials li {
         text-align: left;
+    }
+}
+
+.pain-mirror .desktop-hero-points {
+    display: none;
+    margin-top: 1rem;
+    margin-bottom: -2rem;
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    color: #dadada;
+    text-align: center;
+}
+
+@media (min-width: 769px) {
+    body {
+        background-color: rgb(58, 58, 58);
+        color: #ffffff;
+    }
+
+    .mirror-title {
+        color: #ffffff;
+    }
+
+    .mirror-card {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 10px;
+    }
+
+    .mirror-card h3,
+    .mirror-text {
+        color: #333333;
+    }
+
+    .header {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(9px);
+    }
+
+    .white-logo {
+        display: block;
+    }
+
+    .dark-logo {
+        display: none;
+    }
+
+    .nav-menu .menu-items a {
+        color: white;
+    }
+
+    .menu-toggle span {
+        background-color: white;
+    }
+
+    .pain-mirror .desktop-hero-points {
+        display: block;
+    }
+
+    .pain-mirror .desktop-hero-points .highlight {
+        color: var(--accent-color);
     }
 }
