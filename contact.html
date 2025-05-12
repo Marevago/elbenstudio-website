@@ -88,18 +88,18 @@
 <body>
     <header class="header-contact">        
         <nav class="nav-menu">
+            <ul class="menu-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">Sobre</a></li>
+                <li><a href="members.html">Equipe</a></li>
+                <li><a href="contact.html" class="active">Contato</a></li>
+            </ul>
             <div class="menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            
-            <ul class="menu-items">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="about.html">Serviços</a></li>
-                <li><a href="about.html">Sobre</a></li>
-                <li><a href="https://wa.link/lfs04f">Contato</a></li>
-            </ul>
         </nav>
     </header>
 
@@ -137,8 +137,8 @@
                                 <select id="service" name="service" required>
                                     <option value="">Selecione um serviço</option>
                                     <option value="Website">Website</option>
-                                    <option value="Software Sob Medida">Software Sob Medida</option>
-                                    <option value="Aplicativo Mobile">Aplicativo Mobile</option>
+                                    <option value="Software">Software</option>
+                                    <option value="Aplicativo">Aplicativo</option>
                                     <option value="Produção de Mídia">Produção de Mídia</option>
                                     <option value="Outro">Outro</option>
                                 </select>
@@ -146,7 +146,7 @@
 
                             <div class="form-group full-width">
                                 <label for="message">Sua Mensagem</label>
-                                <textarea id="message" name="message" rows="5" placeholder="Conte-nos sobre suas ideias e objetivos - nosso time apaixonado por tecnologia está pronto para ajudar"></textarea>
+                                <textarea id="message" name="message" rows="5" placeholder="Conte-nos sobre suas ideias e objetivos"></textarea>
                             </div>
 
                             <div class="form-group full-width">
@@ -195,6 +195,7 @@
 <script src="translations.js"></script>
 <script src="language-handler.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
+<script src="animations.js"></script>
 <script type="module" src="script.js"></script>
 
 </body>
