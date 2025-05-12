@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="portfolio-style.css">
-    <title>Aplicativo de E-Commerce - Paulo Sérgio</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Website de E-Commerce para Atacado - Paulo Sérgio</title>
 </head>
 <body>
-    <header class="header">
-        <div class="profile-header">
-            <div class="profile-photo header-photo">
-                <img src="paulo-profile.png" alt="Paulo Sérgio" />
-            </div>
-            <div class="profile-info">
-                <span class="profile-name">Paulo Sérgio</span>
-                <span class="profile-role"><i>Software & Web Developer</i></span>
-            </div>
-        </div>
+    <header class="header-project">
+        <nav class="nav-menu" aria-label="Menu principal">
+            <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-items">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="menu-items" id="menu-items" role="menu">
+                <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+                <li role="none"><a href="blog.html" role="menuitem">Blog</a></li>
+                <li role="none"><a href="about.html" role="menuitem">Sobre</a></li>
+                <li role="none"><a href="members.html" role="menuitem">Equipe</a></li>
+                <li role="none"><a href="contact.html" role="menuitem">Contato</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main class="about-page">
@@ -43,12 +48,24 @@
                                 <li>Gestão de carrinho</li>
                             </ul>
                         </div>
-                        <a href="https://wa.link/x37jye" class="arrow-button">Quero fazer um orçamento</a>
+                        <a href="https://wa.link/x37jye" class="arrow-button-project">Quero fazer um orçamento</a>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <footer class="footer-section">
+        <div id="particles-footer"></div>
+        <div class="content-wrapper">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p class="copyright"> 2025 Elben Studio.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script src="translations.js"></script>
     <script src="language-handler.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
