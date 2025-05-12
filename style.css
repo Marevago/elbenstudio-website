@@ -394,20 +394,21 @@ body.menu-open {
     background-color: rgba(252, 252, 252, 0.5);
     color: black;
     padding: 2rem;
-    margin-top: -6rem;
-    margin-bottom: -2rem;
+    margin-top: -7rem;
+    margin-bottom: -3.5rem;
     z-index: 999;
 }
 
 .header-members .nav-menu {
     background-color: rgba(252, 252, 252, 0.5);  
-    padding: 2rem;
+    padding: 3rem;
     margin-left: 3rem;
     margin-top: -2.5rem;
 }
 
 .header-members .logo {
-    height: clamp(89px, 19vw, 140px);
+    max-height: 65px;
+    height: clamp(399px, 29vw, 190px);
     width: auto;
     object-fit: contain;
     margin-left: -6rem;
