@@ -3100,6 +3100,30 @@ body.menu-open {
         text-align: center;
     }
 
+@media (min-width: 769px) {
+    .hero {
+        display: none;
+    }
+
+    .mirror-title {
+        margin-top: -1rem;
+        font-size: clamp(4rem, 5vw, 6.5rem);
+        padding: 4rem 1rem;
+    }
+
+    .mirror-title em {
+        font-size: clamp(4rem, 5vw, 6.5rem);
+    }
+
+    .mirror-title span {
+        font-size: clamp(4rem, 5vw, 6.5rem);
+    }
+
+    .vision-cards {
+        padding: 1rem 18rem;
+    }
+}
+
     .vision-card .project-image {
         width: 100%;
         height: auto;
