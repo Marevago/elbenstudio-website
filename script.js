@@ -1,8 +1,8 @@
-import { submitContact } from './supabase.js';
-
 document.addEventListener('DOMContentLoaded', function() {
-    setupContactForm();
     setupMenu();
+    if (document.getElementById('contactForm')) {
+        setupContactForm();
+    }
 });
 
 // Funções do popup
@@ -42,28 +42,26 @@ const setupMenu = () => {
     
     if (!menuToggle || !menuItems) return;
 
+    const toggleMenu = (show) => {
+        menuToggle.classList.toggle('active', show);
+        menuItems.classList.toggle('active', show);
+    };
+
     menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        menuItems.classList.toggle('active');
+        const isActive = menuItems.classList.contains('active');
+        toggleMenu(!isActive);
     });
 
-    // Fechar menu ao clicar fora
     document.addEventListener('click', (event) => {
         const isClickInside = menuToggle.contains(event.target) || menuItems.contains(event.target);
-        
         if (!isClickInside && menuItems.classList.contains('active')) {
-            menuToggle.classList.remove('active');
-            menuItems.classList.remove('active');
+            toggleMenu(false);
         }
     });
 
-    // Fechar menu ao clicar em um link
     const menuLinks = document.querySelectorAll('.menu-items a');
     menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            menuToggle.classList.remove('active');
-            menuItems.classList.remove('active');
-        });
+        link.addEventListener('click', () => toggleMenu(false));
     });
 };
 
