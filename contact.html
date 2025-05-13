@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         /* Estilos do Pop-up */
         .popup-overlay {
@@ -86,8 +87,10 @@
     <title>Contato - Elben Studio</title>
 </head>
 <body>
+    <div id="particles-contact" class="particles-container"></div>
     <header class="header-contact">        
         <nav class="nav-menu">
+            <img src="elben_logo.png" alt="Elben Studio" class="logo">
             <ul class="menu-items">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="blog.html">Blog</a></li>
@@ -104,7 +107,6 @@
     </header>
 
     <main class="about-page">
-        <div id="particles-contact"></div>
         <div class="content-wrapper">
             <div class="about-card">
                 <div class="about-content">
@@ -192,11 +194,9 @@
         </div>
     </main>
 
-<script src="translations.js"></script>
-<script src="language-handler.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
-<script src="animations.js"></script>
-<script type="module" src="script.js"></script>
+    <script src="translations.js"></script>
+    <script src="language-handler.js"></script>
+    <script type="module" src="script.js"></script>
 
 </body>
 </html>
