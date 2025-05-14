@@ -13,7 +13,7 @@ const setupParticles = () => {
     const particlesConfig = {
         particles: {
             number: {
-                value: 250,
+                value: 56,
                 direction: 'bottom',
                 density: {
                     enable: true,
@@ -24,7 +24,7 @@ const setupParticles = () => {
                 value: '#ffffff'
             },
             shape: {
-                type: ['circle', 'edge'],
+                type: ['circle'],
                 stroke: {
                     width: 0,
                     color: '#000000'
