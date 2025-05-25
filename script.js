@@ -1,6 +1,30 @@
 import { submitContact } from './supabase.js';
 
+// Loading screen functionality
+function initLoadingScreen() {
+    const loadingScreen = document.querySelector('.loading-screen');
+    
+    // Hide the loading screen after 1 second
+    setTimeout(() => {
+        loadingScreen.classList.add('fade-out');
+        
+        // Remove the loading screen from the DOM after the fade-out animation completes
+        setTimeout(() => {
+            loadingScreen.remove();
+            document.body.style.overflow = 'visible'; // Re-enable scrolling
+        }, 300); // Shorter fade-out duration
+    }, 1500);
+}
+
+// Initialize everything when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Prevent scrolling while loading screen is active
+    document.body.style.overflow = 'hidden';
+    
+    // Start the loading screen sequence
+    initLoadingScreen();
+    
+    // Initialize other components
     setupMenu();
     setupParticles();
     if (document.getElementById('contactForm')) {
