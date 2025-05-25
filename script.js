@@ -4,6 +4,12 @@ import { submitContact } from './supabase.js';
 function initLoadingScreen() {
     const loadingScreen = document.querySelector('.loading-screen');
     
+    // Se não houver loading screen, garante que o scroll esteja habilitado
+    if (!loadingScreen) {
+        document.body.style.overflow = 'visible';
+        return;
+    }
+    
     // Hide the loading screen after 1 second
     setTimeout(() => {
         loadingScreen.classList.add('fade-out');
@@ -18,11 +24,18 @@ function initLoadingScreen() {
 
 // Initialize everything when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Prevent scrolling while loading screen is active
-    document.body.style.overflow = 'hidden';
+    // Check if loading screen exists
+    const loadingScreen = document.querySelector('.loading-screen');
     
-    // Start the loading screen sequence
-    initLoadingScreen();
+    // Only prevent scrolling if there's a loading screen
+    if (loadingScreen) {
+        document.body.style.overflow = 'hidden';
+        // Start the loading screen sequence
+        initLoadingScreen();
+    } else {
+        // Ensure scrolling is enabled if no loading screen
+        document.body.style.overflow = 'visible';
+    }
     
     // Initialize other components
     setupMenu();

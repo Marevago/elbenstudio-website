@@ -1876,8 +1876,8 @@ body.menu-open {
     align-items: center;
     justify-content: center;
     color: black;
-    padding: 3rem;
-    margin-top: -6rem;
+    padding: 1rem 3rem;
+    margin-top: -5rem;
     z-index: 999;
 }
 
