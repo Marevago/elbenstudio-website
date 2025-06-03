@@ -2601,12 +2601,14 @@ body.menu-open {
 @media (max-width: 400px) {
     .blog-grid {
         grid-template-columns: 1fr;
-        padding: 1rem;
+        padding: 0rem;
         gap: 1rem;
+        width: 100%;
     }
 
     .blog-card {
-        margin: 0 1rem;
+        margin: 0 0.3rem;
+        width: auto;
     }
 }
 
