@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="icon" type="image/png" href="alexandra.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Blog - Elben Studio</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <header class="header-blog">        
+        <nav class="nav-menu">
+            <img src="../alexandra.png" alt="Alexandra" class="logo" onclick="alert('Não toque em mim!')">
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="menu-items">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../about.html">Sobre</a></li>
+                <li><a href="../members.html">Equipe</a></li>
+                <li><a href="../contact.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="blog-page">
+        <div class="content-wrapper">
+            <div>
+                <h2 style="color: white; padding: 2rem; margin-top: -3rem;"><i>Supabase</i> é uma boa escolha para o <i>banco de dados</i> do seu projeto?</h2>
+            </div>
+
+            <div class="blog-grid">
+                <!-- Post Card 1 -->
+                <article class="blog-card">
+                    <div class="blog-card-content">
+                        <p class="blog-card-meta">Paulo Sérgio • 7 de Maio, 2025</p>
+                        <div>
+                            <p class="post-paragraph">
+                                O Supabase é uma plataforma open-source de BaaS (Backend-as-a-service) criada pelos desenvolvedores Paulo Copplestone e Ant Wilson, com sede em Singapura. Ele surgiu como alternativa de código aberto ao Firebase do Google, possibilitando mais controle para, principalmente, pequenos projetos que precisam de um banco de dados sólido e barato (ou gratuito).                        
+                            </p>
+                            <br>
+                            <p class="post-paragraph">
+                                E o Supabase tem de fato uma base sólida, já que foi construído sobre PostgreSQL e consegue oferecer um banco de dados bastante robusto.                         
+                            </p>
+                            <br>
+                            <h3 class="post-paragraph">
+                                Em que dá para usar? 
+                            </h3>
+                            <br>
+                            <p class="post-paragraph">
+                                Ele oferece ferramentas completas para backend. Desde o já mencionado banco de dados até API REST, GraphQL, autenticação e autorização com provedores como Google e GitHub (e muitos outros), armazenamento de arquivos, edge functions, dashboards. Podemos usar o Supabase para diversos tipos de projetos. Web e mobile apps, SaaS, MVPs etc. <br>
+                                <br>Além disso, eles tem um plano gratuito que suporta até 2 projetos com APIs ilimitadas e até 500MB de storage. Eu sei, não é muito para projetos que começam a ficar mais complexos, mas já dá para colocar muita coisa no ar. E esse plano também suporta até 50 mil usuários ativos mensais.                              
+                            </p>
+                            <br>
+                            <h3 class="post-paragraph">
+                                Como implementar? 
+                            </h3>
+                            <br>
+                            <p class="post-paragraph">
+                                Depois de criar a conta e um novo projeto no Supabase, tens que instalar o cliente no teu projeto: 
+                                <br>
+                                <br>
+                                <code class="code-snippet" style="color: #808080;">
+                                    npm install @supabase/supabase-js
+                                </code>                           
+                            <br>
+                                <br>
+                                Configurar a conexão:
+                                <br>
+                                <br>
+                                <code class="code-snippet">
+                                    <span style="color: #569CD6;">import</span> { createClient } <span style="color: #569CD6;">from</span> <span style="color: #CE9178;">'@supabase/supabase-js'</span> <br>
+                                    <span style="color: #569CD6;">const</span> supabaseUrl = <span style="color: #CE9178;">'YOUR_SUPABASE_URL'</span> <br>
+                                    <span style="color: #569CD6;">const</span> supabaseKey = <span style="color: #CE9178;">'YOUR_SUPABASE_ANON_KEY'</span> <br>
+                                    <span style="color: #569CD6;">const</span> supabase = createClient(supabaseUrl, supabaseKey)
+                                </code>
+                            <br>
+                                <br>
+                                E pronto. Agora é só usar para inserir os dados:
+                                <br>
+                                <br>
+                                <code class="code-snippet">
+                                    <span style="color: #569CD6;">const</span> { data, error } = <span style="color: #569CD6;">await</span> supabase <br>
+                                    .from(<span style="color: #CE9178;">'users'</span>) <br>
+                                    .insert([{ name: <span style="color: #CE9178;">'Bruce Wayne'</span>, email: <span style="color: #CE9178;">'waynebruce@email.com'</span> }])
+                                </code>
+                            <br>
+                                <br>
+                                E para consultar (ou podes visualizar a tabela no próprio Supabase):
+                                <br>
+                                <br>
+                                <code class="code-snippet">
+                                    <span style="color: #569CD6;">const</span> { data, error } = <span style="color: #569CD6;">await</span> supabase <br>
+                                    .from(<span style="color: #CE9178;">'users'</span>) <br>
+                                    .select(<span style="color: #CE9178;">'*'</span>)
+                                </code>
+
+                                <p class="post-paragraph">
+                                    <br>
+                                    Recapitulando, o Supabase é uma ótima opção para quem precisa colocar o protótipo ou um pequeno projeto no ar. Ele é fácil de mexer e exige o mínimo de conhecimentao de SQL. 
+                                </p>
+                            </p>    
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div id="particles-blog" class="particles-container"></div>
+    </main>
+
+    <footer class="blog-footer">
+        <p>Por Paulo Sérgio. 2025.</p>
+    </footer>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
+    <script src="../script.js"></script>
+    <script type="module" src="../script.js"></script>
+</body>
+</html>
