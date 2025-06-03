@@ -36,7 +36,7 @@
 
             <div class="blog-grid">
                 <article class="blog-card">
-                    <div class="blog-card-content" style="color: black; padding: 1.5rem;">
+                    <div class="blog-card-content" style="color: black; padding: 1.5rem; font-size: 1.2rem;">
                         <p class="blog-card-meta">Paulo Sérgio • 7 de Maio, 2025</p>
                         <div>
                             <p class="post-paragraph">
@@ -64,7 +64,7 @@
                                 Depois de criar a conta e um novo projeto no Supabase, tens que instalar o cliente no teu projeto: 
                                 <br>
                                 <br>
-                                <code class="code-snippet" style="color: #808080;">
+                                <code class="code-snippet" style="color: #808080; font-size: medium;">
                                     npm install @supabase/supabase-js
                                 </code>                           
                             <br>
@@ -72,7 +72,7 @@
                                 Configurar a conexão:
                                 <br>
                                 <br>
-                                <code class="code-snippet">
+                                <code class="code-snippet" style="font-size: medium;">
                                     <span style="color: #569CD6;">import</span> { createClient } <span style="color: #569CD6;">from</span> <span style="color: #CE9178;">'@supabase/supabase-js'</span> <br>
                                     <span style="color: #569CD6;">const</span> supabaseUrl = <span style="color: #CE9178;">'YOUR_SUPABASE_URL'</span> <br>
                                     <span style="color: #569CD6;">const</span> supabaseKey = <span style="color: #CE9178;">'YOUR_SUPABASE_ANON_KEY'</span> <br>
@@ -83,7 +83,7 @@
                                 E pronto. Agora é só usar para inserir os dados:
                                 <br>
                                 <br>
-                                <code class="code-snippet">
+                                <code class="code-snippet" style="font-size: medium;">
                                     <span style="color: #569CD6;">const</span> { data, error } = <span style="color: #569CD6;">await</span> supabase <br>
                                     .from(<span style="color: #CE9178;">'users'</span>) <br>
                                     .insert([{ name: <span style="color: #CE9178;">'Bruce Wayne'</span>, email: <span style="color: #CE9178;">'waynebruce@email.com'</span> }])
@@ -93,7 +93,7 @@
                                 E para consultar (ou podes visualizar a tabela no próprio Supabase):
                                 <br>
                                 <br>
-                                <code class="code-snippet">
+                                <code class="code-snippet" style="font-size: medium;">
                                     <span style="color: #569CD6;">const</span> { data, error } = <span style="color: #569CD6;">await</span> supabase <br>
                                     .from(<span style="color: #CE9178;">'users'</span>) <br>
                                     .select(<span style="color: #CE9178;">'*'</span>)
