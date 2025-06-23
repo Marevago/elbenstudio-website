@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="icon" type="image/png" href="alexandra.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Blog - Elben Studio</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <header class="header-blog">        
+        <nav class="nav-menu">
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="menu-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="about.html">Sobre</a></li>
+                <li><a href="members.html">Equipe</a></li>
+                <li><a href="contact.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="blog-page">
+        <div class="content-wrapper">
+            <div class="blog-header">
+                <img src="alexandra.png" onclick="alert('Não toque em mim!')" alt="alexandra" class="alexandra">
+                <h1 class="blog-title">Elben<i>Wort</i></h1>
+                <p class="blog-subtitle">Devaneios do desenvolvedor</p>
+            </div>
+
+            <div class="blog-grid">
+                <!-- Post Card 1 -->
+                <article class="blog-card">
+                    <div class="blog-card-content">
+                        <h2>Supabase é uma boa escolha para banco de dados do seu projeto?</h2>
+                        <p class="blog-card-meta">Paulo Sérgio • 03 de Junho, 2025</p>
+                        <p class="blog-card-excerpt">O Supabase é uma plataforma open-source de BaaS (Backend-as-a-service) criada pelos desenvolvedores...</p>
+                        <a href="posts/supabase.html" class="blog-card-button">Ler mais</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div id="particles-blog" class="particles-container"></div>
+    </main>
+
+    <footer class="blog-footer">
+        <p>Por Paulo Sérgio. 2025.</p>
+    </footer>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

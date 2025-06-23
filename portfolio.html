@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="logo_naked.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="portfolio-style.css">
+    <title>Portfolio - Paulo Sérgio</title>
+    <style>
+        .social-icon .icon-github {
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22'/%3E%3C/svg%3E");
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22'/%3E%3C/svg%3E");
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="profile-header">
+            <div class="profile-photo header-photo">
+                <img src="paulo-profile.png" alt="Paulo Sérgio" />
+            </div>
+            <div class="profile-info">
+                <span class="profile-name">Paulo Sérgio</span>
+                <span class="profile-role"><i>Software & Web Developer</i></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="about-page">
+        <div id="particles-portfolio"></div>
+        <div class="content-wrapper">
+            <div class="about-card">
+                <div class="about-me">
+                    <h3>Olá! Tudo bem?</h3>
+                    <p data-i18n="about_me_desc">
+                        Sou Paulo, formando em Ciência da Computação e apaixonado por Desenvolvimento Web e de Software. Posso desenvolver seu <strong>website</strong>, <strong>aplicativo mobile</strong>, <strong>software</strong>, <strong>plataforma de e-commerce</strong>, <strong>sistema de gestão</strong>, <strong>reservas</strong> ou <strong>chatbots avançados com inteligência artificial</strong>.      
+                    </p>
+                </div>
+                <h3 class="technologies_title">Tecnologias que tenho Afinidade:</h3>
+                <div class="about-content">
+                    <div class="technologies-section">
+                        <div class="tech-list">
+                            <div class="tech-item">React</div>
+                            <div class="tech-item">PHP</div>
+                            <div class="tech-item">JavaScript</div>
+                            <div class="tech-item">React Native</div>
+                            <div class="tech-item">Node.js</div>
+                            <div class="tech-item">Python</div>
+                        </div>
+                    </div>
+                    <div class="projects-section">
+                        <h3 data-i18n="projects_title">Alguns Projetos que já Trabalhei:</h3>
+                        <div class="project-grid">
+                            <div class="project-card">
+                                <img src="project3.png" alt="Project 1" class="project-image">
+                                <h4 data-i18n="project1_title">Website de Reservas para Pousada</h4>
+                                <p data-i18n="project1_desc">
+                                    Website para pousada, com sistema de reservas e integração com calendários das plataformas Booking e Airbnb para sincronização de calendários.
+                                </p>
+                                <a href="project1.html" class="arrow-button">Ver Projeto</a>
+                            </div>
+                            <div class="project-card">
+                                <img src="project1.png" alt="Project 2" class="project-image">
+                                <h4 data-i18n="project2_title">Aplicativo de E-Commerce</h4>
+                                <p data-i18n="project2_desc">
+                                    Aplicativo de e-commerce para loja virtual, com sistema de pagamento e recomendações de produtos baseadas em IA.
+                                </p>
+                                <a href="project2.html" class="arrow-button">Ver Projeto</a>
+                            </div>
+                            <div class="project-card">
+                                <img src="project2.png" alt="Project 3" class="project-image">
+                                <h4 data-i18n="project3_title">Website de E-Commerce para Atacado</h4>
+                                <p data-i18n="project3_desc">
+                                    Website de e-commerce para loja virtual, com sistema de ocultação de preços mediante login.
+                                </p>
+                                <a href="project3.html" class="arrow-button">Ver Projeto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-card">
+            <div class="social-links">
+                <a href="https://github.com/Marevago" class="social-icon">
+                    <div class="icon-github"></div>
+                </a>
+            </div>
+            <div class="about-bottom">
+                <p class="copyright">Este portfólio foi desenvolvido por Paulo Sérgio. <br>Abril de 2025.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="language-handler.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
