@@ -296,7 +296,7 @@ body.menu-open {
 
 .hero {
     height: 55vh;
-    margin-top: -1rem;
+    margin-top: 0;
     position: relative;
     padding: clamp(1rem, 3vw, 2rem);
     overflow: hidden;
@@ -982,7 +982,7 @@ body.menu-open {
 .mirror-title {
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 500;
-    margin-top: -1.5rem;
+    margin-top: -0.5rem;
     margin-bottom: 1rem;
     line-height: 1.3;
 }
@@ -3646,7 +3646,7 @@ body.menu-open {
     }
 
     .mirror-subtitle {
-        color: #cccccc;
+        color: #ffffff;
         font-size: clamp(1.1rem, 2vw, 1.4rem);
         max-width: 900px;
         margin: -3rem auto 1.5rem auto;
@@ -4287,7 +4287,7 @@ body.menu-open {
     
     /* Subtítulo do pain mirror no iPadOS */
     .mirror-subtitle {
-        color: #cccccc !important;
+        color: #ffffff !important;
         font-size: clamp(1rem, 2.2vw, 1.3rem) !important;
         max-width: 700px !important;
         margin: -3rem auto 1rem auto !important;
