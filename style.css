@@ -990,7 +990,7 @@ body.menu-open {
 .mirror-subtitle {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     font-weight: 400;
-    color: #666;
+    color: #b7b7b7;
     text-align: center;
     max-width: 800px;
     margin: 0 auto 1.5rem auto;
