@@ -10,8 +10,40 @@ const animateOnScroll = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         const opacity = entry.intersectionRatio;
         const translateY = 20 - (opacity * 20);
-        entry.target.style.opacity = opacity;
-        entry.target.style.transform = `translateY(${translateY}px)`;
+        
+        // Efeito especial para mirror-card
+        if (entry.target.classList.contains('mirror-card')) {
+            if (opacity > 0.2) {
+                // Quando o card está visível, fica totalmente opaco e iluminado
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = `translateY(${translateY}px)`;
+                entry.target.style.background = 'linear-gradient(145deg, #ffffff, #f8f8f8)';
+                entry.target.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.25), 0 10px 15px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 255, 255, 0.2)';
+            } else {
+                // Quando não está visível, mantém a opacidade normal da animação
+                entry.target.style.opacity = opacity;
+                entry.target.style.transform = `translateY(${translateY}px)`;
+                entry.target.style.background = 'linear-gradient(145deg, #f6f5f5, #e6e6e6)';
+                entry.target.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.6), 0 6px 6px rgba(0, 0, 0, 0.15)';
+            }
+        } else if (entry.target.classList.contains('clients-title')) {
+            // Efeito especial para clients-title igual aos cards
+            if (opacity > 0.2) {
+                // Quando o título está visível, fica totalmente opaco
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = `translateY(${translateY}px)`;
+                entry.target.style.textShadow = 'none';
+            } else {
+                // Quando não está visível, fica completamente invisível como os cards
+                entry.target.style.opacity = opacity;
+                entry.target.style.transform = `translateY(${translateY}px)`;
+                entry.target.style.textShadow = 'none';
+            }
+        } else {
+            // Para outros elementos, mantém o comportamento normal
+            entry.target.style.opacity = opacity;
+            entry.target.style.transform = `translateY(${translateY}px)`;
+        }
     });
 }, observerOptions);
 
@@ -23,6 +55,7 @@ const elementsToAnimate = [
     '.methodology-step',
     '.member',
     '.cert-item',
+    '.clients-title',
 ];
 
 // Configuração das partículas
@@ -64,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.forEach((element, index) => {
             element.style.opacity = '0';
             element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease, background 0.5s ease, box-shadow 0.5s ease, text-shadow 0.5s ease';
             
             if (selector === '.vision-card' || selector === '.methodology-list li') {
                 element.style.transitionDelay = `${index * 0.1}s`;

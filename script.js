@@ -1,19 +1,19 @@
-import { submitContact } from './supabase.js';
+import './anna-chat.js';
 
 // Loading screen functionality
 function initLoadingScreen() {
     const loadingScreen = document.querySelector('.loading-screen');
-    
+
     // Se não houver loading screen, garante que o scroll esteja habilitado
     if (!loadingScreen) {
         document.body.style.overflow = 'visible';
         return;
     }
-    
+
     // Hide the loading screen after 1 second
     setTimeout(() => {
         loadingScreen.classList.add('fade-out');
-        
+
         // Remove the loading screen from the DOM after the fade-out animation completes
         setTimeout(() => {
             loadingScreen.remove();
@@ -23,10 +23,10 @@ function initLoadingScreen() {
 }
 
 // Initialize everything when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Check if loading screen exists
     const loadingScreen = document.querySelector('.loading-screen');
-    
+
     // Only prevent scrolling if there's a loading screen
     if (loadingScreen) {
         document.body.style.overflow = 'hidden';
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Ensure scrolling is enabled if no loading screen
         document.body.style.overflow = 'visible';
     }
-    
+
     // Initialize other components
     setupMenu();
     setupParticles();
@@ -117,6 +117,35 @@ const setupParticles = () => {
     if (particlesContainer) {
         particlesJS(particlesContainer.id, particlesConfig);
     }
+
+    // Dark snow for desktop hero
+    const heroParticles = document.getElementById('hero-particles-desktop');
+    if (heroParticles) {
+        const heroSnowConfig = {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#6b6b6b' },
+                shape: { type: ['circle'] },
+                opacity: { value: 0.55, random: true, anim: { enable: false } },
+                size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.3, sync: false } },
+                line_linked: { enable: false },
+                move: {
+                    enable: true,
+                    speed: 1.5,
+                    direction: 'bottom',
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: false }, onclick: { enable: false }, resize: true }
+            },
+            retina_detect: true
+        };
+        particlesJS('hero-particles-desktop', heroSnowConfig);
+    }
 };
 
 // Funções do popup
@@ -153,7 +182,7 @@ const closePopup = () => {
 const setupMenu = () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const menuItems = document.querySelector('.menu-items');
-    
+
     if (!menuToggle || !menuItems) return;
 
     const toggleMenu = (show) => {
@@ -166,6 +195,7 @@ const setupMenu = () => {
         toggleMenu(!isActive);
     });
 
+    // Fechar menu ao clicar fora
     document.addEventListener('click', (event) => {
         const isClickInside = menuToggle.contains(event.target) || menuItems.contains(event.target);
         if (!isClickInside && menuItems.classList.contains('active')) {
@@ -183,7 +213,7 @@ const setupMenu = () => {
 const setupContactForm = () => {
     const form = document.getElementById('contactForm');
     const submitButton = form?.querySelector('.submit-button');
-    
+
     if (!form || !submitButton) return;
 
     submitButton.addEventListener('click', handleSubmit);
@@ -195,7 +225,7 @@ const handleSubmit = async (e) => {
     e.stopPropagation();
 
     const form = document.getElementById('contactForm');
-    
+
     // Coletar dados do formulário
     const formData = {
         name: document.getElementById('name').value,
@@ -206,6 +236,7 @@ const handleSubmit = async (e) => {
     };
 
     try {
+        const { submitContact } = await import('./supabase.js');
         await submitContact(formData);
         form.reset();
         showPopup();
