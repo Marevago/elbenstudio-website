@@ -367,13 +367,53 @@
             background: var(--dark);
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        .projects-carousel {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .projects-track {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
             gap: 2rem;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-arrow {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--dark-3);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--gold);
+            color: #0c0c0c;
+            transform: scale(1.05);
+        }
+
+        .carousel-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
         }
 
         .project-card {
+            flex: 0 0 100%;
+            max-width: 100%;
             background: var(--dark-3);
             border-radius: 1.25rem;
             overflow: hidden;
@@ -381,6 +421,7 @@
             transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
             display: flex;
             flex-direction: column;
+            scroll-snap-align: center;
         }
 
         .project-card:hover {
@@ -783,13 +824,13 @@
             margin: 0 auto;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             flex-wrap: wrap;
             gap: 2rem;
         }
 
         .footer-brand img {
-            height: 36px;
+            height: 117px;
             width: auto;
             object-fit: contain;
         }
@@ -917,13 +958,28 @@
 
             .projects-grid,
             .testimonials-grid,
-            .process-grid {
-                grid-template-columns: 1fr;
-            }
+            .diff-grid,
+            .pricing-grid,
+            .process-steps { grid-template-columns: 1fr; }
 
             .footer-inner {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                gap: 1.75rem;
+            }
+
+            .footer-brand { display: flex; flex-direction: column; align-items: center; }
+            .footer-contact { align-items: center; }
+            .footer-social { justify-content: center; }
+
+            /* Mobile project cards - show more image, hide description */
+            .project-card .project-body p {
+                display: none;
+            }
+            .project-card .project-img-wrap {
+                max-height: 400px;
             }
         }
 
@@ -1151,63 +1207,138 @@
         }
 
         .ambient-orb-1 {
-            width: 700px;
-            height: 700px;
-            top: 0%;
-            left: 0%;
-            background: radial-gradient(circle, rgba(202, 188, 134, 0.22) 0%, transparent 70%);
-            animation: ambient-diagonal-1 40s ease-in-out infinite;
+            width: 500px;
+            height: 500px;
+            top: 30%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(202, 188, 134, 0.25) 0%, transparent 70%);
+            animation: nucleus-pulse 6s ease-in-out infinite, nucleus-drift 45s ease-in-out infinite;
         }
 
         .ambient-orb-2 {
-            width: 600px;
-            height: 600px;
-            top: 2%;
-            left: 3%;
-            background: radial-gradient(circle, rgba(202, 188, 134, 0.16) 0%, transparent 70%);
-            animation: ambient-diagonal-2 45s ease-in-out infinite;
+            width: 350px;
+            height: 350px;
+            top: 30%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(202, 188, 134, 0.18) 0%, transparent 70%);
+            animation: orbit-1 20s linear infinite, nucleus-drift 45s ease-in-out infinite;
         }
 
         .ambient-orb-3 {
-            width: 500px;
-            height: 500px;
-            top: 4%;
-            left: 6%;
-            background: radial-gradient(circle, rgba(202, 188, 134, 0.11) 0%, transparent 70%);
-            animation: ambient-diagonal-3 50s ease-in-out infinite;
+            width: 280px;
+            height: 280px;
+            top: 30%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(202, 188, 134, 0.12) 0%, transparent 70%);
+            animation: orbit-2 28s linear infinite reverse, nucleus-drift 45s ease-in-out infinite;
         }
 
         .ambient-orb-4 {
+            width: 220px;
+            height: 220px;
+            top: 30%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(202, 188, 134, 0.08) 0%, transparent 70%);
+            animation: orbit-3 36s linear infinite, nucleus-drift 45s ease-in-out infinite;
+        }
+
+        @keyframes nucleus-pulse {
+            0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @keyframes nucleus-drift {
+            0%, 100% { top: 30%; left: 30%; }
+            25% { top: 60%; left: 20%; }
+            50% { top: 40%; left: 70%; }
+            75% { top: 20%; left: 50%; }
+        }
+
+        @keyframes orbit-1 {
+            0% { transform: translate(-50%, -50%) rotate(0deg) translateX(25vw) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg) translateX(25vw) rotate(-360deg); }
+        }
+
+        @keyframes orbit-2 {
+            0% { transform: translate(-50%, -50%) rotate(0deg) translateX(18vw) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(-360deg) translateX(18vw) rotate(360deg); }
+        }
+
+        @keyframes orbit-3 {
+            0% { transform: translate(-50%, -50%) rotate(0deg) translateX(12vw) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg) translateX(12vw) rotate(-360deg); }
+        }
+
+        /* SECOND ATOM EFFECT */
+        .ambient-orb-5 {
             width: 450px;
             height: 450px;
-            top: 6%;
-            left: 9%;
-            background: radial-gradient(circle, rgba(202, 188, 134, 0.08) 0%, transparent 70%);
-            animation: ambient-diagonal-4 55s ease-in-out infinite;
+            top: 70%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(180, 160, 100, 0.20) 0%, transparent 70%);
+            animation: nucleus-pulse-2 7s ease-in-out infinite, nucleus-drift-2 50s ease-in-out infinite;
         }
 
-        @keyframes ambient-diagonal-1 {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(60vw, 60vh); }
-            100% { transform: translate(0, 0); }
+        .ambient-orb-6 {
+            width: 320px;
+            height: 320px;
+            top: 70%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(180, 160, 100, 0.14) 0%, transparent 70%);
+            animation: orbit-4 24s linear infinite, nucleus-drift-2 50s ease-in-out infinite;
         }
 
-        @keyframes ambient-diagonal-2 {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(50vw, 50vh); }
-            100% { transform: translate(0, 0); }
+        .ambient-orb-7 {
+            width: 250px;
+            height: 250px;
+            top: 70%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(180, 160, 100, 0.10) 0%, transparent 70%);
+            animation: orbit-5 32s linear infinite reverse, nucleus-drift-2 50s ease-in-out infinite;
         }
 
-        @keyframes ambient-diagonal-3 {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(40vw, 40vh); }
-            100% { transform: translate(0, 0); }
+        .ambient-orb-8 {
+            width: 200px;
+            height: 200px;
+            top: 70%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(180, 160, 100, 0.06) 0%, transparent 70%);
+            animation: orbit-6 40s linear infinite, nucleus-drift-2 50s ease-in-out infinite;
         }
 
-        @keyframes ambient-diagonal-4 {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(30vw, 30vh); }
-            100% { transform: translate(0, 0); }
+        @keyframes nucleus-pulse-2 {
+            0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.15); }
+        }
+
+        @keyframes nucleus-drift-2 {
+            0%, 100% { top: 70%; left: 60%; }
+            25% { top: 25%; left: 80%; }
+            50% { top: 55%; left: 15%; }
+            75% { top: 80%; left: 40%; }
+        }
+
+        @keyframes orbit-4 {
+            0% { transform: translate(-50%, -50%) rotate(0deg) translateX(20vw) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg) translateX(20vw) rotate(-360deg); }
+        }
+
+        @keyframes orbit-5 {
+            0% { transform: translate(-50%, -50%) rotate(0deg) translateX(15vw) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(-360deg) translateX(15vw) rotate(360deg); }
+        }
+
+        @keyframes orbit-6 {
+            0% { transform: translate(-50%, -50%) rotate(0deg) translateX(10vw) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg) translateX(10vw) rotate(-360deg); }
         }
 
         /* cards and client strip above ambient glow */
@@ -1256,6 +1387,10 @@
         <div class="ambient-orb ambient-orb-2"></div>
         <div class="ambient-orb ambient-orb-3"></div>
         <div class="ambient-orb ambient-orb-4"></div>
+        <div class="ambient-orb ambient-orb-5"></div>
+        <div class="ambient-orb ambient-orb-6"></div>
+        <div class="ambient-orb ambient-orb-7"></div>
+        <div class="ambient-orb ambient-orb-8"></div>
     </div>
 
     <!-- HEADER -->
@@ -1335,6 +1470,74 @@
         </div>
     </div>
 
+    <!-- PROJECTS -->
+    <section class="projects-section" id="projetos">
+        <div class="content-wrap">
+            <div class="section-header reveal">
+                <span class="section-label">Portfólio</span>
+                <h2 class="section-title">Projetos que Geramos<br><em>Resultados Reais</em></h2>
+                <p class="section-sub">Cada site que entregamos é pensado do zero para o negócio do cliente — nada de templates prontos.</p>
+            </div>
+            <div class="projects-carousel">
+                <button class="carousel-arrow carousel-prev" aria-label="Projeto anterior">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="projects-track">
+                    <div class="project-card reveal">
+                        <div class="project-img-wrap">
+                            <img src="project3.png" alt="Website de Reservas para Pousada">
+                            <span class="project-tag">Turismo & Reservas</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>Website de Reservas para Pousada</h3>
+                            <p>Site completo para pousada com sistema de reservas online e sincronização de calendários com Booking e Airbnb em tempo real.</p>
+                            <div class="project-result">Aumento de 40% nas reservas diretas</div>
+                            <a href="project1.html" class="project-link">
+                                Ver Projeto
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card reveal">
+                        <div class="project-img-wrap">
+                            <img src="project1.png" alt="Aplicativo de E-Commerce">
+                            <span class="project-tag">E-Commerce & App</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>Aplicativo de E-Commerce com IA</h3>
+                            <p>App de loja virtual com sistema de pagamento integrado e recomendações de produtos personalizadas por inteligência artificial.</p>
+                            <div class="project-result">Ticket médio 28% maior com IA</div>
+                            <a href="project2.html" class="project-link">
+                                Ver Projeto
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card reveal">
+                        <div class="project-img-wrap">
+                            <img src="project2.png" alt="Website de E-Commerce para Atacado">
+                            <span class="project-tag">Atacado & B2B</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>E-Commerce B2B para Atacado</h3>
+                            <p>Plataforma de vendas por atacado com sistema exclusivo de ocultação de preços e liberação de tabelas mediante login de cliente.</p>
+                            <div class="project-result">Redução de 60% no tempo de pedidos</div>
+                            <a href="project3.html" class="project-link">
+                                Ver Projeto
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-arrow carousel-next" aria-label="Próximo projeto">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- DIFFERENTIATOR -->
     <section class="differentiator-section" id="diferencial">
         <div class="content-wrap">
@@ -1345,153 +1548,37 @@
             </div>
             <div class="diff-grid">
                 <div class="diff-card reveal">
-                    <span class="diff-icon">📊</span>
+                    <span class="diff-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
+                        </svg>
+                    </span>
                     <h3>Análise antes de criar</h3>
                     <p>Antes de escrever uma linha de código, estudamos seu mercado, seus concorrentes e o comportamento do seu público. O site já nasce estratégico.</p>
                 </div>
                 <div class="diff-card reveal">
-                    <span class="diff-icon">🔬</span>
+                    <span class="diff-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                    </span>
                     <h3>Método científico aplicado</h3>
                     <p>Formulamos hipóteses, medimos resultados e iteramos com base em evidências reais. Cada decisão de design e copy tem um propósito mensurável.</p>
                 </div>
                 <div class="diff-card reveal">
-                    <span class="diff-icon">📈</span>
+                    <span class="diff-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                            <polyline points="17 6 23 6 23 12"/>
+                        </svg>
+                    </span>
                     <h3>Métricas que importam</h3>
                     <p>Taxa de conversão, tempo na página, origem do tráfego — relatórios claros para que você veja exatamente o retorno do seu investimento.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="projects-section" id="projetos">
-        <div class="content-wrap">
-            <div class="section-header reveal">
-                <span class="section-label">Portfólio</span>
-                <h2 class="section-title">Projetos que Geramos<br><em>Resultados Reais</em></h2>
-                <p class="section-sub">Cada site que entregamos é pensado do zero para o negócio do cliente — nada de templates prontos.</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card reveal">
-                    <div class="project-img-wrap">
-                        <img src="project3.png" alt="Website de Reservas para Pousada">
-                        <span class="project-tag">Turismo & Reservas</span>
-                    </div>
-                    <div class="project-body">
-                        <h3>Website de Reservas para Pousada</h3>
-                        <p>Site completo para pousada com sistema de reservas online e sincronização de calendários com Booking e Airbnb em tempo real.</p>
-                        <div class="project-result">Aumento de 40% nas reservas diretas</div>
-                        <a href="project1.html" class="project-link">
-                            Ver Projeto
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="project-img-wrap">
-                        <img src="project1.png" alt="Aplicativo de E-Commerce">
-                        <span class="project-tag">E-Commerce & App</span>
-                    </div>
-                    <div class="project-body">
-                        <h3>Aplicativo de E-Commerce com IA</h3>
-                        <p>App de loja virtual com sistema de pagamento integrado e recomendações de produtos personalizadas por inteligência artificial.</p>
-                        <div class="project-result">Ticket médio 28% maior com IA</div>
-                        <a href="project2.html" class="project-link">
-                            Ver Projeto
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="project-img-wrap">
-                        <img src="project2.png" alt="Website de E-Commerce para Atacado">
-                        <span class="project-tag">Atacado & B2B</span>
-                    </div>
-                    <div class="project-body">
-                        <h3>E-Commerce B2B para Atacado</h3>
-                        <p>Plataforma de vendas por atacado com sistema exclusivo de ocultação de preços e liberação de tabelas mediante login de cliente.</p>
-                        <div class="project-result">Redução de 60% no tempo de pedidos</div>
-                        <a href="project3.html" class="project-link">
-                            Ver Projeto
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRICING -->
-    <section class="pricing-section" id="precos">
-        <div class="content-wrap">
-            <div class="section-header reveal">
-                <span class="section-label">Investimento</span>
-                <h2 class="section-title">Transparência desde<br><em>o Primeiro Contato</em></h2>
-                <p class="section-sub">Sem surpresas no orçamento. Saiba o que esperar antes mesmo de nos chamar.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card reveal">
-                    <h3>Institucional</h3>
-                    <span class="price-from">A partir de</span>
-                    <div class="pricing-amount">
-                        <span class="installments">4x de</span>
-                        <span class="value">R$225</span>
-                        <span class="total">ou R$900 à vista</span>
-                    </div>
-                    <div class="pricing-divider"></div>
-                    <ul class="pricing-features">
-                        <li>Site de até 5 páginas</li>
-                        <li>Design exclusivo</li>
-                        <li>100% responsivo</li>
-                        <li>SEO técnico incluído</li>
-                        <li>Formulário de contato</li>
-                        <li>Prazo: até 15 dias úteis</li>
-                    </ul>
-                    <a href="#orcamento" class="pricing-cta outline">Solicitar Orçamento</a>
-                </div>
-                <div class="pricing-card featured reveal">
-                    <div class="pricing-badge">Mais Escolhido</div>
-                    <h3>E-Commerce</h3>
-                    <span class="price-from">A partir de</span>
-                    <div class="pricing-amount">
-                        <span class="installments">4x de</span>
-                        <span class="value">R$450</span>
-                        <span class="total">ou R$1.800 à vista</span>
-                    </div>
-                    <div class="pricing-divider"></div>
-                    <ul class="pricing-features">
-                        <li>Loja virtual completa</li>
-                        <li>Catálogo de produtos</li>
-                        <li>Integração de pagamentos</li>
-                        <li>Painel administrativo</li>
-                        <li>SEO técnico avançado</li>
-                        <li>Prazo: até 30 dias úteis</li>
-                    </ul>
-                    <a href="#orcamento" class="pricing-cta solid">Solicitar Orçamento</a>
-                </div>
-                <div class="pricing-card reveal">
-                    <h3>Personalizado</h3>
-                    <span class="price-from">Sob medida</span>
-                    <div class="pricing-amount">
-                        <span class="installments">Parcelamento</span>
-                        <span class="value" style="font-size:1.8rem">Consulte</span>
-                        <span class="total">condições na proposta</span>
-                    </div>
-                    <div class="pricing-divider"></div>
-                    <ul class="pricing-features">
-                        <li>Sistemas e plataformas</li>
-                        <li>Reservas e agendamentos</li>
-                        <li>Área de membros</li>
-                        <li>Integrações com IA</li>
-                        <li>Automações de processos</li>
-                        <li>Prazo combinado</li>
-                    </ul>
-                    <a href="#orcamento" class="pricing-cta outline">Falar com um Especialista</a>
-                </div>
-            </div>
-            <p class="pricing-note">* Valores a partir de. Orçamento final definido após briefing. Parcelamento em até 4x no cartão de crédito.</p>
         </div>
     </section>
 
@@ -1555,25 +1642,48 @@
             <div class="process-grid">
                 <div class="process-step reveal">
                     <div class="process-step-number">01</div>
-                    <div class="process-icon">💬</div>
+                    <div class="process-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
                     <h3>Briefing</h3>
                     <p>Conversamos para entender seu negócio, seu público, seus objetivos e suas referências visuais. Quanto mais detalhes, melhor o resultado.</p>
                 </div>
                 <div class="process-step reveal">
                     <div class="process-step-number">02</div>
-                    <div class="process-icon">🎨</div>
+                    <div class="process-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                            <path d="M2 2l7.586 7.586"/>
+                            <circle cx="11" cy="11" r="2"/>
+                        </svg>
+                    </div>
                     <h3>Design</h3>
                     <p>Criamos o layout completo do seu site antes de programar. Você vê tudo, aprova e solicita ajustes sem nenhuma limitação.</p>
                 </div>
                 <div class="process-step reveal">
                     <div class="process-step-number">03</div>
-                    <div class="process-icon">⚙️</div>
+                    <div class="process-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                        </svg>
+                    </div>
                     <h3>Desenvolvimento</h3>
                     <p>Programamos seu site do zero com código limpo, rápido e responsivo. Otimizado para SEO e para carregar em qualquer dispositivo.</p>
                 </div>
                 <div class="process-step reveal">
                     <div class="process-step-number">04</div>
-                    <div class="process-icon">🚀</div>
+                    <div class="process-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                            <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                        </svg>
+                    </div>
                     <h3>Publicação</h3>
                     <p>Colocamos seu site no ar com domínio, hospedagem configurada e suporte pós-lançamento. Seu negócio online, funcionando.</p>
                 </div>
@@ -1713,6 +1823,42 @@
             });
         }, { threshold: 0.12 });
         reveals.forEach(el => observer.observe(el));
+
+        /* Projects carousel */
+        const projectsTrack = document.querySelector('.projects-track');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        let currentIndex = 0;
+        const cards = document.querySelectorAll('.project-card');
+        const totalCards = cards.length;
+
+        function updateCarousel() {
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32; // 2rem gap
+            projectsTrack.scrollTo({
+                left: currentIndex * (cardWidth + gap),
+                behavior: 'smooth'
+            });
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === totalCards - 1;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < totalCards - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        // Initialize carousel state
+        updateCarousel();
 
         /* FAQ accordion */
         function toggleFaq(btn) {
